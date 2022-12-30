@@ -5,6 +5,7 @@ Bureaucrat::Bureaucrat()
 {
     this->_name = "Simple Bureaucrat";
     this->_grade = 150;
+
     std::cout << "Bureaucrat name " << _name << " grade " << _grade << " was successful created" << std::endl; 
 }
 
@@ -75,4 +76,17 @@ std::ostream& operator<<(std::ostream& os, Bureaucrat const &other)
 Bureaucrat::~Bureaucrat()
 {
     std::cout << "Bureaucrat destroyed" << std::endl;
+}
+
+void    Bureaucrat::signForm(Form &form)
+{
+   try
+   {
+     form.beSigned(*this);
+     std::cout << _name << " signed " << form.getFormName() << std::endl;
+   }
+   catch (std::exception &e)
+   {
+        std::cout << _name << " couldn't sign " << form.getFormName() << " because the grade is to low" << std::endl;
+   }
 }
