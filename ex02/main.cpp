@@ -1,5 +1,6 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
+#include "ShurubberyCreationForm.hpp"
 
 void    test1()
 {
@@ -13,10 +14,10 @@ void    test1()
     }
     try
     {
-        Form form;
-        Form form2("Contrat", 1, 15);
-        Form form3(form2);
-        std::cout << form << std::endl;
+        // Form form;
+        // Form form2("Contrat", 1, 15);
+        // Form form3(form2);
+        // std::cout << form << std::endl;
     }
     catch(std::exception& e)
     {
@@ -25,7 +26,7 @@ void    test1()
 
     try
     {
-        Form form30("Contract", 0, 150);
+        // Form form30("Contract", 0, 150);
     }
     catch(std::exception& e)
     {
@@ -34,7 +35,7 @@ void    test1()
 
     try
     {
-        Form form40("Contract", 1, 151);
+        // Form form40("Contract", 1, 151);
     }
     catch(std::exception& e)
     {
@@ -47,11 +48,11 @@ void    test2()
     try
     {
         Bureaucrat b("Ezequiel", 10);
-        Form    f("Contract", 9, 8);
+        // Form    f("Contract", 9, 8);
 
-        b.signForm(f);
+        // b.signForm(f);
         b.increment();
-        b.signForm(f);
+        // b.signForm(f);
     }
     catch(std::exception& e)
     {
@@ -159,9 +160,17 @@ void    test3()
 
 }
 
+void	test4()
+{
+	ShurubberyCreationForm();
+
+
+}
+
 int main()
 {
     // test1();
     // test2();
-    test3();
+    // test3();
+	test4();
 }
