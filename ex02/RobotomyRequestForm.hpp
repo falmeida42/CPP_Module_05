@@ -1,15 +1,14 @@
-#ifndef SHURUBBERYCREATIONFORM_H
-#define SHURUBBERYCREATIONFORM_H
+#ifndef ROBOTOMYRQUESTFORM_H
+#define ROBOTOMYRQUESTFORM_H
 #include "Form.hpp"
 
-class ShurubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
     private:
     std::string _target;
     public:
-    ShurubberyCreationForm();
-    ShurubberyCreationForm(const std::string &target);
-    ~ShurubberyCreationForm();
+    RobotomyRequestForm();
+    ~RobotomyRequestForm();
     void    execute(const Bureaucrat &Bureaucrat);
 
     const std::string   getFormName(void);

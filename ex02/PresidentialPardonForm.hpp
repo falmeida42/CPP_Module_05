@@ -1,15 +1,14 @@
-#ifndef SHURUBBERYCREATIONFORM_H
-#define SHURUBBERYCREATIONFORM_H
+#ifndef PRESIDENTIALPARDONFORM_H
+#define PRESIDENTIALPARDONFORM_H
 #include "Form.hpp"
 
-class ShurubberyCreationForm : public AForm
+class PresidentialPardonForm : public AForm
 {
     private:
     std::string _target;
     public:
-    ShurubberyCreationForm();
-    ShurubberyCreationForm(const std::string &target);
-    ~ShurubberyCreationForm();
+    PresidentialPardonForm();
+    ~PresidentialPardonForm();
     void    execute(const Bureaucrat &Bureaucrat);
 
     const std::string   getFormName(void);

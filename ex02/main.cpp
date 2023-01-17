@@ -162,8 +162,21 @@ void    test3()
 
 void	test4()
 {
-	ShurubberyCreationForm();
+	
 
+	try
+	{
+		Bureaucrat bureaurat;
+		ShurubberyCreationForm ez;
+		ez.execute(bureaurat);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+
+	
 
 }
 
