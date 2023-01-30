@@ -26,11 +26,11 @@ AForm &AForm::operator=(const AForm &other)
     return (*this);
 }
 
-const std::string AForm::getFormName(void) { return (_name); }
+const std::string AForm::getFormName(void) const { return (_name); }
 
-const int AForm::getGradeRequiredToSign(void) { return (_gradeRequiredToSign); }
+int AForm::getGradeRequiredToSign(void) const { return (_gradeRequiredToSign); }
 
-const int AForm::getGradeRequiredToExecute(void) { return (_gradeRequiredToExecute); }
+int AForm::getGradeRequiredToExecute(void) const { return (_gradeRequiredToExecute); }
 
 const bool AForm::getFormStatus(void) { return (_isFormSigned); }
 

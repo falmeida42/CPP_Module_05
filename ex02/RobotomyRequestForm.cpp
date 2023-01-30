@@ -1,9 +1,8 @@
 #include "RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 45)
+RobotomyRequestForm::RobotomyRequestForm() : _target("Default"), AForm("RobotomyRequestForm", 72, 45)
 {
-    _target = "default";
-    std::cout << "RobotomyRequestForm created" << std::endl; 
+    std::cout << "RobotomyRequestForm target " << _target << " created" << std::endl; 
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
@@ -11,13 +10,21 @@ RobotomyRequestForm::~RobotomyRequestForm()
     std::cout << "RobotomyRequestForm destroyed" << std::endl;
 }
 
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : _target(target), AForm("RobotomyRequestForm", 72, 45)
+{
+    std::cout << "RobotomyRequestForm target " << _target << " created" << std::endl; 
+}
 
-const std::string   RobotomyRequestForm::getFormName(void) { return(AForm::getFormName()); }
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : _target(other._target), AForm(other.getFormName(), other.getGradeRequiredToSign(), other.getGradeRequiredToExecute())
+{
+    std::cout << "RobotomyRequestForm target " << _target << " created" << std::endl; 
+}
 
-const bool                RobotomyRequestForm::getFormStatus(void) { return(AForm::getFormStatus()); }
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other)
+{
+    return (*this);
+}
 
-const int           RobotomyRequestForm::getGradeRequiredToSign(void) { return(AForm::getGradeRequiredToSign()); }
+void    RobotomyRequestForm::action() const {
 
-const int           RobotomyRequestForm::getGradeRequiredToExecute(void) { return(AForm::getGradeRequiredToExecute()); }
-
-void                RobotomyRequestForm::beSigned(Bureaucrat &bureaucrat) { return(AForm::beSigned(bureaucrat)); }
+}

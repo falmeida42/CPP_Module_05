@@ -5,17 +5,15 @@
 class PresidentialPardonForm : public AForm
 {
     private:
-    std::string _target;
+        std::string _target;
     public:
-    PresidentialPardonForm();
-    ~PresidentialPardonForm();
-    void    execute(const Bureaucrat &Bureaucrat);
-
-    const std::string   getFormName(void);
-    const bool                getFormStatus(void) override;
-    const int           getGradeRequiredToSign(void) override;
-    const int           getGradeRequiredToExecute(void) override;
-    void                beSigned(Bureaucrat &bureaucrat) override;
+        PresidentialPardonForm();
+        PresidentialPardonForm(const std::string target);
+        PresidentialPardonForm(const PresidentialPardonForm& other);
+        PresidentialPardonForm &operator=(const PresidentialPardonForm& other);
+        virtual ~PresidentialPardonForm();
+        void    execute(const Bureaucrat &Bureaucrat);
+        void    action() const override;
 };
 
 #endif

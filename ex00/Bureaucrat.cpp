@@ -1,29 +1,26 @@
 #include "Bureaucrat.hpp"
 #include <stdexcept>
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat() : _name("Simple Bureaucrat"), _grade(150)
 {
-    this->_name = "Simple Bureaucrat";
-    this->_grade = 150;
     std::cout << "Bureaucrat name " << _name << " grade " << _grade << " was successful created" << std::endl; 
 }
 
-Bureaucrat::Bureaucrat(const std::string name, const int grade)
+Bureaucrat::Bureaucrat(const std::string name, const int grade) : _name(name), _grade(grade)
 {
     if (grade > 150)
         throw Bureaucrat::GradeTooLowException();
     if (grade < 1)
         throw Bureaucrat::GradeTooHighException();
-    
-    this->_name = name;
-    this->_grade = grade;
-    std::cout << "Bureaucrat name " << _name << " grade " << _grade << " was successful created" << std::endl;
+    else
+    {
+        this->_grade = grade;
+        std::cout << "Bureaucrat name " << _name << " grade " << _grade << " was successful created" << std::endl;
+    } 
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat)
+Bureaucrat::Bureaucrat(const Bureaucrat &bureaucrat) : _name(bureaucrat._name), _grade(bureaucrat._grade)
 {
-    this->_name = bureaucrat._name;
-    this->_grade = bureaucrat._grade;
     std::cout << "Bureaucrat name " << _name << " grade " << _grade << " was successful created" << std::endl;
 }
 
@@ -31,10 +28,9 @@ Bureaucrat  &Bureaucrat::operator=(const Bureaucrat& other)
 {
     if (this != &other)
     {
-        this->_name = other._name;
         this->_grade = other._grade;
+        std::cout << "Bureaucrat name " << _name << " grade " << _grade << " was successful created" << std::endl;
     }
-    std::cout << "Bureaucrat name " << _name << " grade " << _grade << " was successful created" << std::endl;
     return (*this);
 }
 

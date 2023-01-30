@@ -5,17 +5,16 @@
 class RobotomyRequestForm : public AForm
 {
     private:
-    std::string _target;
+        std::string _target;
     public:
-    RobotomyRequestForm();
-    ~RobotomyRequestForm();
-    void    execute(const Bureaucrat &Bureaucrat);
+        RobotomyRequestForm();
+        RobotomyRequestForm(const std::string target);
+        RobotomyRequestForm(const RobotomyRequestForm &other);
+        RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+        virtual ~RobotomyRequestForm();
+        void    execute(const Bureaucrat &Bureaucrat);
 
-    const std::string   getFormName(void);
-    const bool                getFormStatus(void) override;
-    const int           getGradeRequiredToSign(void) override;
-    const int           getGradeRequiredToExecute(void) override;
-    void                beSigned(Bureaucrat &bureaucrat) override;
+        void    action() const override;
 };
 
 #endif

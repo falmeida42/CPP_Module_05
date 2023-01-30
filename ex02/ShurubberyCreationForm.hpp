@@ -5,18 +5,16 @@
 class ShurubberyCreationForm : public AForm
 {
     private:
-    std::string _target;
+        std::string _target;
     public:
-    ShurubberyCreationForm();
-    ShurubberyCreationForm(const std::string &target);
-    ~ShurubberyCreationForm();
-    void    execute(const Bureaucrat &Bureaucrat);
+        ShurubberyCreationForm();
+        ShurubberyCreationForm(const std::string &target);
+        ShurubberyCreationForm(const ShurubberyCreationForm &other);
+        ShurubberyCreationForm &operator=(const ShurubberyCreationForm &other);
+        virtual ~ShurubberyCreationForm();
+        void    execute(const Bureaucrat &Bureaucrat);
 
-    const std::string   getFormName(void);
-    const bool                getFormStatus(void) override;
-    const int           getGradeRequiredToSign(void) override;
-    const int           getGradeRequiredToExecute(void) override;
-    void                beSigned(Bureaucrat &bureaucrat) override;
+        void    action() const override;
 };
 
 #endif

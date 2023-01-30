@@ -3,7 +3,7 @@
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5)
 {
     _target = "default";
-    std::cout << "PresidentialPardonForm created" << std::endl; 
+    std::cout << "PresidentialPardonForm " << _target << " created" << std::endl;
 }
 
 PresidentialPardonForm::~PresidentialPardonForm()
@@ -11,13 +11,21 @@ PresidentialPardonForm::~PresidentialPardonForm()
     std::cout << "PresidentialPardonForm destroyed" << std::endl;
 }
 
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : _target(target), AForm("PresidentialPardonForm", 25, 5)
+{
+    std::cout << "PresidentialPardonForm " << _target << " created" << std::endl;
+}
 
-const std::string   PresidentialPardonForm::getFormName(void) { return(AForm::getFormName()); }
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other) : _target(other._target), AForm(other.getFormName(), other.getGradeRequiredToSign(), other.getGradeRequiredToExecute())
+{
+    std::cout << "PresidentialPardonForm " << _target << " created" << std::endl;
+}
 
-const bool                PresidentialPardonForm::getFormStatus(void) { return(AForm::getFormStatus()); }
+PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
+{
+    return (*this);
+}
 
-const int           PresidentialPardonForm::getGradeRequiredToSign(void) { return(AForm::getGradeRequiredToSign()); }
+void PresidentialPardonForm::action() const {
 
-const int           PresidentialPardonForm::getGradeRequiredToExecute(void) { return(AForm::getGradeRequiredToExecute()); }
-
-void                PresidentialPardonForm::beSigned(Bureaucrat &bureaucrat) { return(AForm::beSigned(bureaucrat)); }
+}
