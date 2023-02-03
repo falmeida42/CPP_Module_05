@@ -2,7 +2,7 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5)
 {
-    _target = "default";
+    _target = "Default";
     std::cout << "PresidentialPardonForm " << _target << " created" << std::endl;
 }
 
@@ -26,6 +26,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
     return (*this);
 }
 
-void PresidentialPardonForm::action() const {
-
+void    PresidentialPardonForm::action() const 
+{
+    std::cout << _target << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

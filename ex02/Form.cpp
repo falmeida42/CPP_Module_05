@@ -54,3 +54,10 @@ void AForm::beSigned(Bureaucrat &bureaucrat)
     else
         throw AForm::GradeTooLowException();
 }
+
+void AForm::execute(Bureaucrat const & executor) const
+{
+    if (executor.getGrade() > this->getGradeRequiredToExecute())
+        throw Bureaucrat::GradeTooLowException();
+    action();
+}

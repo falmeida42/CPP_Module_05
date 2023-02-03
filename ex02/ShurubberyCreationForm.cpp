@@ -21,9 +21,9 @@ ShurubberyCreationForm::~ShurubberyCreationForm()
     std::cout << "ShrubberyForm destroyed" << std::endl;
 }
 
-void    ShurubberyCreationForm::execute(const Bureaucrat &Bureaucrat)
+void    ShurubberyCreationForm::action() const
 {
-    std::string fileName = _target.append("_shrubbery").append(".txt");
+    std::string fileName = (_target + "_shrubbery" + ".txt");
     std::ofstream file;
 
     file.open(fileName);
@@ -45,8 +45,4 @@ void    ShurubberyCreationForm::execute(const Bureaucrat &Bureaucrat)
    file <<     "      |  |" << std::endl;
    file << "______/____\\____" << std::endl;
    file.close();
-}
-
-void    ShurubberyCreationForm::action() const {
-
 }

@@ -1,6 +1,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "ShurubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 void    test1()
 {
@@ -166,9 +168,16 @@ void	test4()
 
 	try
 	{
-		Bureaucrat bureaurat;
+		Bureaucrat bureaurat("FAL", 1);
 		ShurubberyCreationForm ez;
+		RobotomyRequestForm ez2;
+		PresidentialPardonForm ez3;
+
 		ez.execute(bureaurat);
+		ez2.execute(bureaurat);
+		ez3.execute(bureaurat);
+
+		
 	}
 	catch(const std::exception& e)
 	{
