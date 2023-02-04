@@ -13,7 +13,7 @@ class Form
         bool                _isFormSigned;
         const int           _gradeRequiredToSign;
         const int           _gradeRequiredToExecute;
-
+        
     public:
         Form();
         Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExecute);
@@ -21,7 +21,7 @@ class Form
         Form &operator=(const Form &other);
 
         const std::string   getFormName(void);
-        const bool                getFormStatus(void);
+        const std::string   getFormStatus(void);
         const int           getGradeRequiredToSign(void);
         const int           getGradeRequiredToExecute(void);
         void                beSigned(Bureaucrat &bureaucrat);

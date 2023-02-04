@@ -3,7 +3,7 @@
 
 Form::Form() : _name("Default Form"), _isFormSigned(false), _gradeRequiredToSign(149), _gradeRequiredToExecute(150)
 {
-    std::cout << "Form " << _name << " created. The grade required to Sign the form is " << _gradeRequiredToSign << ". The grade required to execute the form is " << _gradeRequiredToExecute << " The form status is " << _isFormSigned << std::endl;
+    std::cout << "Form " << _name << " created. The grade required to Sign the form is " << _gradeRequiredToSign << ". The grade required to execute the form is " << _gradeRequiredToExecute << " The form status is " << getFormStatus() << std::endl;
 }
 
 Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExecute) : _name(name), _isFormSigned(false), _gradeRequiredToSign(gradeRequiredToSign), _gradeRequiredToExecute(gradeRequiredToExecute)
@@ -13,12 +13,12 @@ Form::Form(std::string name, int gradeRequiredToSign, int gradeRequiredToExecute
     if (gradeRequiredToSign < 1 || gradeRequiredToExecute < 1)
         throw Form::GradeTooHighException();
 
-    std::cout << "Form " << _name << " created. The grade required to Sign the form is " << _gradeRequiredToSign << ". The grade required to execute the form is " << _gradeRequiredToExecute << " The form status is " << _isFormSigned << std::endl;
+    std::cout << "Form " << _name << " created. The grade required to Sign the form is " << _gradeRequiredToSign << ". The grade required to execute the form is " << _gradeRequiredToExecute << " The form status is " << getFormStatus() << std::endl;
 }
 
 Form::Form(const Form &other) : _name(other._name), _isFormSigned(false), _gradeRequiredToSign(other._gradeRequiredToSign), _gradeRequiredToExecute(other._gradeRequiredToExecute)
 {
-    std::cout << "Form " << _name << " created. The grade required to Sign the form is " << _gradeRequiredToSign << ". The grade required to execute the form is " << _gradeRequiredToExecute << " The form status is " << _isFormSigned << std::endl;
+    std::cout << "Form " << _name << " created. The grade required to Sign the form is " << _gradeRequiredToSign << ". The grade required to execute the form is " << _gradeRequiredToExecute << " The form status is " << getFormStatus() << std::endl;
 }
 
 Form &Form::operator=(const Form &other)
@@ -32,7 +32,7 @@ const int Form::getGradeRequiredToSign(void) { return (_gradeRequiredToSign); }
 
 const int Form::getGradeRequiredToExecute(void) { return (_gradeRequiredToExecute); }
 
-const bool Form::getFormStatus(void) { return (_isFormSigned); }
+const std::string Form::getFormStatus(void) { return (_isFormSigned == 0 ? "not Signed" : "Signed"); }
 
 Form::~Form()
 {
@@ -49,8 +49,8 @@ std::ostream &operator<<(std::ostream &os, Form &other)
 
 void Form::beSigned(Bureaucrat &bureaucrat)
 {
-    if (bureaucrat.getGrade() <= _gradeRequiredToSign)
-        _isFormSigned = true;
+    if (bureaucrat.getGrade() <= this->getGradeRequiredToSign())
+        this->_isFormSigned = true;
     else
         throw Form::GradeTooLowException();
 }

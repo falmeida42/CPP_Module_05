@@ -1,205 +1,56 @@
 #include "Bureaucrat.hpp"
 
-void    test0()
-{
-    Bureaucrat a;
-
-}
-
-void    test1()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 151);
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-}
-
-
-
-
-void    test2()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 0);
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-}
-
-void    test3()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 42);
-        std::cout << bureaurat.getName() << " " << bureaurat.getGrade() << std::endl;
-    }
-    catch(Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-}
-
-void    test4()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 3);
-        std::cout << bureaurat.getName() << " " << bureaurat.getGrade() << std::endl;
-        bureaurat.increment();
-        bureaurat.increment();
-        bureaurat.increment();
-        bureaurat.increment();
-    }
-    catch(Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-}
-
-void    test5()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 147);
-        std::cout << bureaurat.getName() << " " << bureaurat.getGrade() << std::endl;
-        bureaurat.decrement();
-        bureaurat.decrement();
-        bureaurat.decrement();
-        bureaurat.decrement();
-    }
-    catch(Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-}
-
-void    test6()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 147);
-        Bureaucrat bureaurat2(bureaurat);
-        std::cout << bureaurat.getName() << " " << bureaurat.getGrade() << std::endl;
-        bureaurat.decrement();
-        bureaurat.decrement();
-        bureaurat.decrement();
-        bureaurat.decrement();
-
-        std::cout << bureaurat2.getName() << " " << bureaurat2.getGrade() << std::endl;
-        bureaurat2.decrement();
-        bureaurat2.decrement();
-        bureaurat2.decrement();
-        bureaurat2.decrement();
-    }
-    catch(Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-}
-
-void    test7()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 147);
-        Bureaucrat bureaurat2 = bureaurat;
-        std::cout << bureaurat.getName() << " " << bureaurat.getGrade() << std::endl;
-        bureaurat.decrement();
-        bureaurat.decrement();
-        bureaurat.decrement();
-        bureaurat.decrement();
-
-        std::cout << bureaurat2.getName() << " " << bureaurat2.getGrade() << std::endl;
-        bureaurat2.decrement();
-        bureaurat2.decrement();
-        bureaurat2.decrement();
-        bureaurat2.decrement();
-    }
-    catch(Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-}
-
-void    test8()
-{
-    try
-    {
-        Bureaucrat bureaurat("Ezequiel", 147);
-        Bureaucrat bureaurat2 = bureaurat;
-        std::cout << bureaurat.getName() << " " << bureaurat.getGrade() << std::endl;
-        bureaurat.decrement();
-        std::cout << bureaurat << std::endl;
-        bureaurat.decrement();
-        std::cout << bureaurat << std::endl;
-        bureaurat.decrement();
-        std::cout << bureaurat << std::endl;
-        bureaurat.decrement();
-        std::cout << bureaurat << std::endl;
-
-        std::cout << bureaurat2.getName() << " " << bureaurat2.getGrade() << std::endl;
-        bureaurat2.increment();
-        std::cout << bureaurat2 << std::endl;
-        bureaurat2.increment();
-        std::cout << bureaurat2 << std::endl;
-        bureaurat2.increment();
-        std::cout << bureaurat2 << std::endl;
-        bureaurat2.increment();
-        std::cout << bureaurat2 << std::endl;
-    }
-    catch(Bureaucrat::GradeTooHighException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    catch(Bureaucrat::GradeTooLowException& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-
-}
-
 int main()
 {
-    // test0();
-    // test1();
-    // test2();
-    // test3();
-    // test4();
-    // test5();
-    // test6();
-    test7();
-    // test8();
+	Bureaucrat	ez("Ezequiel", 2);
+	Bureaucrat	rf("Rafael", 149);
+	Bureaucrat	b;
 
+	std::cout << std::endl;
+
+	std::cout << ez << std::endl;
+	ez.increment();
+    std::cout << ez << std::endl;
+	std::cout << rf << std::endl;
+	rf.decrement();
+    std::cout << rf << std::endl;
+	std::cout << b << std::endl;
+	std::cout << "Hello" << (b = rf) << std::endl;
+
+	std::cout << std::endl;
+
+	try {
+		ez.increment();
+	} catch(std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		rf.decrement();
+	} catch(std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat	b1("Inácio", -1);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat b1("Kevin", 75);
+		Bureaucrat b2 = b1;
+		std::cout << b1 << std::endl;
+		Bureaucrat b3;
+		std::cout << b3.getName() << std::endl;
+		std::cout << b3.getGrade() << std::endl;
+		b3 = b2;
+		std::cout << b3 << std::endl;
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+	try {
+		Bureaucrat b3("Karina", 199);
+	} catch (std::exception& e) {
+		std::cerr << e.what() << std::endl;
+	}
+
+	return (0);
 }

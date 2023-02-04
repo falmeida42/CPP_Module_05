@@ -1,27 +1,27 @@
-#include "ShurubberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShurubberyCreationForm::ShurubberyCreationForm() : _target("Default"), AForm("ShrubberyForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm() : _target("Default"), AForm("ShrubberyForm", 145, 137)
 {
     std::cout << "ShrubberyForm created" << std::endl; 
 }
 
-ShurubberyCreationForm::ShurubberyCreationForm(const std::string &target) : _target(target), AForm("ShrubberyForm", 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &target) : _target(target), AForm("ShrubberyForm", 145, 137)
 {
     std::cout << "ShrubberyForm created" << std::endl; 
 }
 
-ShurubberyCreationForm &ShurubberyCreationForm::operator=(const ShurubberyCreationForm &other)
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other)
 {
     return (*this);
 }
 
-ShurubberyCreationForm::~ShurubberyCreationForm()
+ShrubberyCreationForm::~ShrubberyCreationForm()
 {
     std::cout << "ShrubberyForm destroyed" << std::endl;
 }
 
-void    ShurubberyCreationForm::action() const
+void    ShrubberyCreationForm::action() const
 {
     std::string fileName = (_target + "_shrubbery" + ".txt");
     std::ofstream file;

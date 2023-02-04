@@ -1,198 +1,82 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
-#include "ShurubberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 
-void    test1()
-{
-    try
-    {
-        Bureaucrat bureaurat;
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        // Form form;
-        // Form form2("Contrat", 1, 15);
-        // Form form3(form2);
-        // std::cout << form << std::endl;
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+/**
+ * Shrubbery form: sign 145, exec 137
+ * Robotomy form: sign72, exec 5
+ * Pardon form: sign 25, exec 5*/
 
-    try
-    {
-        // Form form30("Contract", 0, 150);
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+void    test_shrubbery() {
+    std::cout << "\n***SHRUBBERY CREATION TEST***" <<std::endl;
 
-    try
-    {
-        // Form form40("Contract", 1, 151);
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    Bureaucrat  greta("Greta", 150);
+    Bureaucrat  jessica("Jessica", 70);
+    ShrubberyCreationForm No1("form1");
+    std::cout << std::endl;
+
+    greta.executeForm(No1);
+    greta.signForm(No1);
+    jessica.executeForm(No1);
+    greta.executeForm(No1);
+	jessica.signForm(No1);
+	jessica.executeForm(No1);
+
+    std::cout << std::endl;
 }
 
-void    test2()
-{
-    try
-    {
-        Bureaucrat b("Ezequiel", 10);
-        // Form    f("Contract", 9, 8);
+void    test_robotomy() {
+    std::cout << "\n***ROBOTOMY REQUEST TEST***" <<std::endl;
 
-        // b.signForm(f);
-        b.increment();
-        // b.signForm(f);
-    }
-    catch(std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+    Bureaucrat  hal("HAL2000", 80);
+    Bureaucrat  jessica("Jessica", 44);
+
+    RobotomyRequestForm f0("form0");
+    RobotomyRequestForm f1("form1");
+    RobotomyRequestForm f2("form2");
+    RobotomyRequestForm f3("form3");
+
+    std::cout << std::endl;
+
+    hal.executeForm(f0);
+    hal.executeForm(f1);
+    jessica.signForm(f0);
+    hal.signForm(f0);
+    hal.signForm(f1);
+    hal.signForm(f2);
+    hal.signForm(f3);
+    std::cout << std::endl;
+    jessica.executeForm(f0);
+    hal.executeForm(f0);
+    hal.executeForm(f1);
+    hal.executeForm(f2);
+    hal.executeForm(f3);
+
+    std::cout << std::endl;
 }
 
+void    test_pardon() {
+    std::cout << "\n***PRESIDENTIAL PARDON***" <<std::endl;
 
-void    test3()
-{
-    #include "Bureaucrat.hpp"
+    Bureaucrat  zaphod("Zaphod", 30);
+    Bureaucrat  zarniwoop("Zarniwoop", 4);
+    PresidentialPardonForm arthur("Arthur");
+    std::cout << std::endl;
 
-	// Constructor with a bad grade
-	// -49
-	std::cout << std::endl;
-	std::cout << "CONSTRUCTING WITH GRADE -49:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	try
-	{
-		Bureaucrat bill("Bill", -49);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
+    zaphod.executeForm(arthur);
+    zarniwoop.executeForm(arthur);
+    zaphod.signForm(arthur);
+    zarniwoop.executeForm(arthur);
+    zaphod.executeForm(arthur);
 
-	// 256
-	std::cout << std::endl;
-	std::cout << "CONSTRUCTING WITH GRADE 256:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	try
-	{
-		Bureaucrat bill("Bill", 256);
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
-
-	// Normal increment/decrement and "<<" overload
-	std::cout << std::endl;
-	std::cout << "IN/DECREMENT + \"<<\" overload:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	Bureaucrat bob("Bob", 1);
-	try
-	{
-		bob.decrement();
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what();
-	}
-	// "<<" operator overload used
-	std::cout << bob << std::endl;
-	try
-	{
-		bob.increment();
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what();
-	}
-	// "<<" operator overload used
-	std::cout << bob;
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
-
-	// Increment 1 exception
-	std::cout << std::endl;
-	std::cout << "INCREMENT GRADE 1:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	try
-	{
-		bob.decrement();
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-	//-------------------------------------------------------
-
-	// Decrement 150 exception
-	std::cout << std::endl;
-	std::cout << "DECREMENT GRADE 150:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-	try
-	{
-		bob.decrement();
-	}
-	catch (std::exception& e)
-	{
-		std::cout << e.what();
-	}
-	std::cout << std::endl << std::endl;
-
-	//-------------------------------------------------------
-	std::cout << std::endl;
-	std::cout << "DESTRUCTORS:" << std::endl;
-	std::cout << "----------------------------" << std::endl;
-
-}
-
-void	test4()
-{
-	
-
-	try
-	{
-		Bureaucrat bureaurat("FAL", 1);
-		ShurubberyCreationForm ez;
-		RobotomyRequestForm ez2;
-		PresidentialPardonForm ez3;
-
-		ez.execute(bureaurat);
-		ez2.execute(bureaurat);
-		ez3.execute(bureaurat);
-
-		
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-
-	
-
+    std::cout << std::endl;
 }
 
 int main()
 {
-    test1();
-    test2();
-    test3();
-	test4();
+    // Form f("test", 1, 1); // should not compile
+    test_shrubbery();
+    test_robotomy();
+    test_pardon();
 }
