@@ -4,18 +4,22 @@
 #include "Bureaucrat.hpp"
 
 typedef struct s_pair {
-    std::string formRequest;
-    AForm *(*func)(const std::string);
+    std::string formName;
+    AForm *(*func)(std::string);
 } t_pair;
 
-class Intern
+class Intern : public Bureaucrat
 {
     private:
-        t_pair  formRequests[2];
+        t_pair  formRequests[3];
     public:
         AForm    *makeForm(std::string formName, std::string target);
-        AForm    *makeShrubbery(std::string target);
+        static AForm    *makeShrubbery(const std::string target);
+        static AForm    *makePresidentialPardon(const std::string target);
+        static AForm    *makeRobotomy(const std::string target);
         Intern();
+        Intern(const Intern& other);
+        Intern &operator=(const Intern& other);
         ~Intern();
 };
 
